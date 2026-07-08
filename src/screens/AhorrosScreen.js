@@ -64,26 +64,6 @@ export default function AhorrosScreen() {
     ])
   }
 
-  const agregarAhorro = (ahorro) => {
-    Alert.prompt ? Alert.prompt(
-      'Agregar ahorro',
-      '¿Cuánto quieres agregar?',
-      [
-        { text: 'Cancelar', style: 'cancel' },
-        { text: 'Agregar', onPress: async (valor) => {
-          const nuevoTotal = Number(ahorro.monto_actual) + parseFloat(valor || '0')
-          await ahorrosDb.actualizar(ahorro.id, { monto_actual: nuevoTotal })
-          await cargar()
-        }}
-      ],
-      'plain-text',
-      '0'
-    ) : (
-      // Fallback: usar modal de edición
-      setEditando(ahorro)
-    )
-  }
-
   if (loading) return <View style={styles.centered}><ActivityIndicator size="large" color={COLORS.primary} /></View>
 
   return (
@@ -106,7 +86,7 @@ export default function AhorrosScreen() {
               <View style={styles.ahorroHeader}>
                 <Text style={styles.ahorroNombre}>{ahorro.nombre}</Text>
                 <TouchableOpacity onPress={() => eliminar(ahorro.id)}>
-                  <Text style={styles.deleteIcon}>🗑️</Text>
+                  <Text style={styles.deleteIcon}>{'🗑️'}</Text>
                 </TouchableOpacity>
               </View>
 
@@ -138,7 +118,7 @@ export default function AhorrosScreen() {
 
         {ahorros.length === 0 && (
           <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>🐷</Text>
+            <Text style={styles.emptyIcon}>{'🐷'}</Text>
             <Text style={styles.emptyText}>Sin metas de ahorro</Text>
             <Text style={styles.emptySubtext}>Define metas: viaje, fondo de emergencia, carro...</Text>
           </View>
