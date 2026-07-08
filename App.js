@@ -1,5 +1,5 @@
 import React from 'react'
-import { StatusBar, ActivityIndicator, View } from 'react-native'
+import { StatusBar, ActivityIndicator, View, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -39,7 +39,7 @@ function MainTabs() {
           const icon = getTabBarIcon(route.name, focused)
           return (
             <View style={{ alignItems: 'center' }}>
-              <View style={{ fontSize: 22 }}>{icon}</View>
+              <Text style={{ fontSize: 22 }}>{icon}</Text>
             </View>
           )
         },
